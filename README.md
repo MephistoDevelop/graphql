@@ -25,3 +25,6 @@ Install BcryptJs to encrypt paswords strings on graphql with this command:
  
  Install graphql is date library to manage the scalar datetimes using this command:
  > npm install graphql-iso-date
+
+ Install library to generate JWT (Jason Web Toke) to authenticate users on API
+ > npm install jsonwebtoken
