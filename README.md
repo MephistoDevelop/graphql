@@ -11,3 +11,9 @@ Install node modules to use Express server with graphql using CORS request with 
 > npm install express apollo-server-express cors dotenv
 
 on server.js file we are going to put our main structure from Apollo Server with graphql
+
+we are going to install uuid npm package to use id automatly generated.
+
+ > npm install uuid
+
+ 

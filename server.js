@@ -3,6 +3,8 @@ const { ApolloServer, gql } = require('apollo-server-express');
 const cors = require('cors');
 const dotEnv = require('dotenv');
 const uuid = require('uuid')
+const resolvers = require('./resolvers/index')
+const typeDefs = require('./typeDefs')
 const { tasks, users } = require('./constatns')
 
 //set env variables
@@ -13,63 +15,6 @@ const app = express();
 app.use(cors());
 //Body parser Middleware
 app.use(express.json());
-
-const typeDefs = gql `
-    type Query {
-        greetings:String
-        tasks:[Task!]
-        task(id: ID!): Task
-        users: [User!]
-        user(id: ID!): User
-    }
-    input createTaskInput{
-        name: String!
-        completed: Boolean!
-        userId: ID!
-    }
-
-    type Mutation {
-        createTask(input: createTaskInput!): Task
-    }
-
-    type User {
-        id:ID!
-        name:String!
-        email:String!
-        tasks:[Task!]
-    }
-
-    type Task {
-        id:ID!
-        name:String!
-        completed:Boolean!
-        user:User!
-    }
-`;
-
-const resolvers = {
-    Query: {
-        greetings: () => "Hello World MephistoDevelops",
-        tasks: () => tasks,
-        task: (_, { id }) => tasks.find(task => task.id === id),
-        users: () => users,
-        user: (_, { id }) => users.find(user => user.id === id)
-
-    },
-    Mutation: {
-        createTask: (_, { input }) => {
-            const task = {...input, id: uuid.v1() };
-            tasks.push(task)
-            return task
-        }
-    },
-    Task: {
-        user: ({ userId }) => users.find(user => user.id === userId)
-    },
-    User: {
-        tasks: ({ id }) => tasks.filter(task => task.id === id)
-    }
-};
 
 const apolloServer = new ApolloServer({
     typeDefs,
