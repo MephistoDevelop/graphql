@@ -16,8 +16,10 @@ we are going to install uuid npm package to use id automatly generated.
 
  > npm install uuid
 
-
 Install mongoDB npm library to conect graphql with MOngoDB running this command: 
 
 > npm install mongoose
+
+Install BcryptJs to encrypt paswords strings on graphql with this command:
+> npm install bcryptjs
  
