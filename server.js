@@ -20,7 +20,10 @@ app.use(express.json());
 
 const apolloServer = new ApolloServer({
     typeDefs,
-    resolvers
+    resolvers,
+    context: () => {
+        return { randomNumber: Math.random() }
+    }
 });
 
 apolloServer.applyMiddleware({ app, path: '/graphql' });

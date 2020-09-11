@@ -6,8 +6,14 @@ const User = require('../database/models/user');
 
 module.exports = {
     Query: {
-        users: () => users,
-        user: (_, { id }) => users.find(user => user.id === id)
+        users: (_, { id }, { randomNumber }) => {
+            console.log("My random: ", randomNumber, id);
+            return users;
+        },
+        user: (_, { id }, { randomNumber }) => {
+            console.log("My random: ", randomNumber);
+            return users.find(user => user.id === id)
+        }
     },
     Mutation: {
         signup: async(_, { input }) => {
