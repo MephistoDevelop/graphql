@@ -5,14 +5,16 @@ const dotEnv = require('dotenv');
 const uuid = require('uuid')
 const resolvers = require('./resolvers/index')
 const typeDefs = require('./typeDefs')
-const { tasks, users } = require('./constatns')
+const { connection } = require('./database/util')
 
 //set env variables
 dotEnv.config();
 const app = express();
-///Use the cors variable
 
+connection();
+///Use the cors variable
 app.use(cors());
+
 //Body parser Middleware
 app.use(express.json());
 
