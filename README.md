@@ -23,3 +23,5 @@ Install mongoDB npm library to conect graphql with MOngoDB running this command:
 Install BcryptJs to encrypt paswords strings on graphql with this command:
 > npm install bcryptjs
  
+ Install graphql is date library to manage the scalar datetimes using this command:
+ > npm install graphql-iso-date
